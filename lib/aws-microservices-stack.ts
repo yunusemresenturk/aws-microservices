@@ -59,7 +59,7 @@ export class AwsMicroservicesStack extends cdk.Stack {
 
     const product = apigw.root.addResource('product');
     product.addMethod('GET');
-    product.addMethod('POST');
+    product.addMethod('POST'); 
 
     const singleProduct = product.addResource('{id}');
     singleProduct.addMethod('GET'); 
