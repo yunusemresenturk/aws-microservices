@@ -54,6 +54,7 @@ export class AwsMicroservicesStack extends cdk.Stack {
     const apigw = new LambdaRestApi (this, 'productApi', {
       restApiName : 'Product Service',
       handler: productFunction,
+      proxy: false
     });
 
     const product = apigw.root.addResource('product');
@@ -61,10 +62,9 @@ export class AwsMicroservicesStack extends cdk.Stack {
     product.addMethod('POST');
 
     const singleProduct = product.addResource('{id}');
-    singleProduct.addMethod('GET');
+    singleProduct.addMethod('GET'); 
     singleProduct.addMethod('PUT');
     singleProduct.addMethod('DELETE');
-    
   }
 }
   
